@@ -1319,9 +1319,32 @@ function switchTab(tab, el) {
 }
 
 function searchItems() {
-    const filter = document.getElementById('searchBar').value.toLowerCase();
-    document.querySelectorAll('tbody tr').forEach(row => {
-        row.style.display = row.innerText.toLowerCase().includes(filter) ? '' : 'none';
+    const filter = document.getElementById('searchBar').value.trim().toLowerCase();
+    const sections = document.querySelectorAll('.tab-content');
+    const tabs = document.querySelectorAll('.tab');
+
+    if (!filter) {
+        // Restore normal tab view when the search is cleared.
+        sections.forEach(section => section.classList.remove('active'));
+        let activeTab = document.querySelector('.tab.active');
+        if (!activeTab) activeTab = tabs[0];
+        if (activeTab) {
+            const match = activeTab.getAttribute('onclick')?.match(/switchTab\('([^']+)'/);
+            if (match) document.getElementById(match[1])?.classList.add('active');
+        }
+        document.querySelectorAll('tbody tr').forEach(row => row.style.display = '');
+        return;
+    }
+
+    // During a search, show every section that contains at least one match.
+    sections.forEach(section => {
+        let hasMatch = false;
+        section.querySelectorAll('tbody tr').forEach(row => {
+            const matches = row.innerText.toLowerCase().includes(filter);
+            row.style.display = matches ? '' : 'none';
+            if (matches) hasMatch = true;
+        });
+        section.classList.toggle('active', hasMatch);
     });
 }
 
