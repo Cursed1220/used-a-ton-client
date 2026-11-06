@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mira Price List</title>
+<title>Used-A-Ton Customer Price List</title>
 
 <style>
 :root {
@@ -210,6 +210,71 @@ body.searching #searchResults { display: block; }
   th, td { padding: 9px 5px; font-size: 12px; }
   input[type="number"] { width: 66px; }
 }
+
+/* Used-A-Ton customer price list brand theme */
+:root {
+  color-scheme: dark;
+  --bg: #080609;
+  --panel: rgba(20, 10, 18, .94);
+  --panel-2: #1a1019;
+  --gold: #f2a52c;
+  --gold-light: #ffd375;
+  --pink: #ff168e;
+  --pink-light: #ff69c4;
+  --text: #fff8fc;
+  --muted: #c8b5c3;
+  --line: rgba(255, 39, 159, .28);
+  --shadow: 0 24px 70px rgba(0,0,0,.58);
+}
+body {
+  padding: 28px 20px 64px;
+  background:
+    radial-gradient(ellipse at 50% -12%, rgba(255,22,142,.24), transparent 42%),
+    radial-gradient(circle at 8% 28%, rgba(242,165,44,.10), transparent 24%),
+    radial-gradient(circle at 92% 40%, rgba(255,22,142,.09), transparent 27%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.012) 0 1px, transparent 1px 7px),
+    linear-gradient(180deg, #160b15 0%, #09070b 46%, #050407 100%);
+}
+.page-layout { max-width: 1440px; }
+.main-content {
+  padding: clamp(18px, 3vw, 42px);
+  border: 1px solid rgba(255,96,183,.35);
+  border-radius: 28px;
+  background: linear-gradient(150deg, rgba(28,15,27,.97), rgba(9,8,12,.97) 58%, rgba(24,13,18,.98));
+  box-shadow: var(--shadow), 0 0 42px rgba(255,22,142,.10), inset 0 1px rgba(255,255,255,.06);
+}
+.main-content::before { height: 3px; background: linear-gradient(90deg, transparent, var(--pink), var(--gold-light), #fff, var(--gold), var(--pink), transparent); }
+h2#logo { margin: 0 auto; line-height: 0; }
+h2#logo img { display: block; width: min(100%, 380px); height: auto; margin: 0 auto; filter: drop-shadow(0 12px 24px rgba(255,0,128,.17)); }
+h1 { margin: 9px 0 24px; color: #f5d9e9; letter-spacing: .24em; font-size: 12px; }
+h1::after { content: "✦  BUY  •  SELL  •  TRADE  •  TREASURE  ✦"; display: block; margin: 10px auto 0; color: var(--gold-light); font-size: 10px; letter-spacing: .22em; text-shadow: 0 0 15px rgba(255,168,55,.32); }
+.total {
+  border-color: rgba(255,192,90,.48);
+  background: linear-gradient(135deg, rgba(255,22,142,.16), rgba(255,255,255,.035) 48%, rgba(242,165,44,.12));
+  box-shadow: inset 0 1px rgba(255,255,255,.08), 0 12px 35px rgba(0,0,0,.28), 0 0 24px rgba(255,22,142,.08);
+  color: var(--gold-light);
+}
+button { border-color: rgba(255,80,174,.45); background: linear-gradient(145deg, #382031, #1a111a); color: #fff1fa; }
+button:hover { border-color: var(--pink-light); background: linear-gradient(145deg, #53213e, #25121f); }
+button:focus-visible, .tab:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+#searchBar { background: rgba(8,6,10,.88); border-color: rgba(255,255,255,.13); }
+#searchBar:focus { border-color: var(--pink-light); box-shadow: 0 0 0 4px rgba(255,22,142,.12); }
+.tabs { background: rgba(7,5,9,.78); border-color: rgba(255,84,171,.19); }
+.tab { color: #d0bdca; }
+.tab:hover { color: #fff; background: rgba(255,22,142,.10); }
+.tab.active { color: #260b1a; background: linear-gradient(135deg, #ffb6e1, #ff3fac 54%, #ffb94e); box-shadow: 0 7px 20px rgba(255,22,142,.24); }
+table { background: rgba(10,7,12,.82); border-color: rgba(255,255,255,.09); }
+th { color: #ffd78f; background: linear-gradient(180deg, #281622, #1b1019); border-bottom-color: rgba(255,67,165,.30); }
+td { color: #f1eaf0; border-bottom-color: rgba(255,255,255,.055); }
+tbody tr:hover td { background: rgba(255,22,142,.075); }
+input[type="number"] { background: #0a080c; border-color: rgba(255,255,255,.16); }
+input[type="number"]:focus { border-color: var(--pink-light); box-shadow: 0 0 0 3px rgba(255,22,142,.12); }
+@media (max-width: 700px) {
+  body { padding: 12px 8px 30px; }
+  .main-content { padding: 18px 10px; border-radius: 19px; }
+  h1 { letter-spacing: .14em; }
+  h1::after { font-size: 8px; letter-spacing: .12em; }
+}
 </style>
 </head>
 
@@ -218,7 +283,7 @@ body.searching #searchResults { display: block; }
 <div class="page-layout">
 <div class="main-content">
 
-<h2 id="logo"><span>Used-A-Ton</span></h2>
+<h2 id="logo"><img src="used-a-ton-logo.png" alt="Used-A-Ton Pawnshop"></h2>
 <h1>Pawnshop Price List</h1>
 
 <div class="total" id="totalPrices">
